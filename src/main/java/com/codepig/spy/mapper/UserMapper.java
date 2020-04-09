@@ -44,4 +44,14 @@ public interface UserMapper {
      * 根据queryvo中的条件查询用户
      */
     List<User> findUserByVo(QueryVo vo);
+
+    /**
+     * 根据条件查询用户
+     */
+    List<User> findUserByCondition(User user);
+
+    /**
+     * 子查询(根据QueryVo中提供的id集合，查询用户信息）
+     */
+    List<User> findUserInIds(QueryVo vo);
 }

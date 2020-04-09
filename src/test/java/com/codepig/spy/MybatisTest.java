@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -127,6 +129,34 @@ public class MybatisTest {
         List<User> users = userMapper.findUserByVo(queryVo);
         for (User r : users) {
             System.out.println(r);
+        }
+    }
+
+    /**
+     * 根据条件查询用户
+     */
+    @Test
+    public void testFindUserByCondition() {
+        User u = new User();
+        u.setUserName("老王");
+        u.setUserSex("男");
+        List<User> userByCondition = userMapper.findUserByCondition(u);
+        for (User user : userByCondition) {
+            System.out.println(user);
+        }
+    }
+
+    /**
+     * 测试foreach标签的使用
+     */
+    @Test
+    public void testFindUserInIds() {
+        QueryVo vo = new QueryVo();
+        List<Integer> list = Arrays.asList(1,2,3);
+        vo.setIds(list);
+        List<User> userInIds = userMapper.findUserInIds(vo);
+        for (User userInId : userInIds) {
+            System.out.println(userInId);
         }
     }
 }
